@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.maquila_entities;
+package com.maquila.mservices.entities;
 
 import java.io.Serializable;
 import javax.persistence.Column;
