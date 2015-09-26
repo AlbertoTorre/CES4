@@ -25,13 +25,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "tmq_cliente")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "TmqCliente.findAll", query = "SELECT t FROM TmqCliente t"),
-    @NamedQuery(name = "TmqCliente.findByDniId", query = "SELECT t FROM TmqCliente t WHERE t.dniId = :dniId"),
-    @NamedQuery(name = "TmqCliente.findByDsCorreo", query = "SELECT t FROM TmqCliente t WHERE t.dsCorreo = :dsCorreo"),
-    @NamedQuery(name = "TmqCliente.findByNmTelefono", query = "SELECT t FROM TmqCliente t WHERE t.nmTelefono = :nmTelefono"),
-    @NamedQuery(name = "TmqCliente.findByDsDireccion", query = "SELECT t FROM TmqCliente t WHERE t.dsDireccion = :dsDireccion")})
 public class TmqCliente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

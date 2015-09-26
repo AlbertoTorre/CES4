@@ -15,12 +15,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -28,13 +25,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "tmq_encabezado_servicio")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "TmqEncabezadoServicio.findAll", query = "SELECT t FROM TmqEncabezadoServicio t"),
-    @NamedQuery(name = "TmqEncabezadoServicio.findByDniId", query = "SELECT t FROM TmqEncabezadoServicio t WHERE t.dniId = :dniId"),
-    @NamedQuery(name = "TmqEncabezadoServicio.findByNmValorTotal", query = "SELECT t FROM TmqEncabezadoServicio t WHERE t.nmValorTotal = :nmValorTotal"),
-    @NamedQuery(name = "TmqEncabezadoServicio.findByNmHorasTotalesLaboradas", query = "SELECT t FROM TmqEncabezadoServicio t WHERE t.nmHorasTotalesLaboradas = :nmHorasTotalesLaboradas"),
-    @NamedQuery(name = "TmqEncabezadoServicio.findByFeServicio", query = "SELECT t FROM TmqEncabezadoServicio t WHERE t.feServicio = :feServicio")})
 public class TmqEncabezadoServicio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,6 +39,7 @@ public class TmqEncabezadoServicio implements Serializable {
     @Column(name = "fe_servicio")
     @Temporal(TemporalType.DATE)
     private Date feServicio;
+    
     @JoinColumn(name = "nm_id_cliente", referencedColumnName = "dni_id")
     @ManyToOne
     private TmqCliente nmIdCliente;

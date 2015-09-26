@@ -29,14 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "tmq_persona")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "TmqPersona.findAll", query = "SELECT t FROM TmqPersona t"),
-    @NamedQuery(name = "TmqPersona.findByDniId", query = "SELECT t FROM TmqPersona t WHERE t.dniId = :dniId"),
-    @NamedQuery(name = "TmqPersona.findByDsDocumento", query = "SELECT t FROM TmqPersona t WHERE t.dsDocumento = :dsDocumento"),
-    @NamedQuery(name = "TmqPersona.findByFeRegistro", query = "SELECT t FROM TmqPersona t WHERE t.feRegistro = :feRegistro")})
 public class TmqPersona implements Serializable {
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
