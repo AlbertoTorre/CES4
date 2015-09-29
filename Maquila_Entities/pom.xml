@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.MyCompany</groupId>
+  <artifactId>Maquila_Entities</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Maquila_Entities</name>
+  <url>http://maven.apache.org</url>
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+    <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>eclipselink</artifactId>
+      <version>2.5.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+      <version>2.5.2</version>
+    </dependency>
+      <dependency>
+          <groupId>unknown.binary</groupId>
+          <artifactId>org.eclipse.persistence.antlr</artifactId>
+          <version>SNAPSHOT</version>
+      </dependency>
+      <dependency>
+          <groupId>unknown.binary</groupId>
+          <artifactId>org.eclipse.persistence.asm</artifactId>
+          <version>SNAPSHOT</version>
+      </dependency>
+      <dependency>
+          <groupId>unknown.binary</groupId>
+          <artifactId>org.eclipse.persistence.core</artifactId>
+          <version>SNAPSHOT</version>
+      </dependency>
+      <dependency>
+          <groupId>unknown.binary</groupId>
+          <artifactId>org.eclipse.persistence.jpa</artifactId>
+          <version>SNAPSHOT</version>
+      </dependency>
+      <dependency>
+          <groupId>unknown.binary</groupId>
+          <artifactId>org.eclipse.persistence.jpa.modelgen</artifactId>
+          <version>SNAPSHOT</version>
+      </dependency>
+      <dependency>
+          <groupId>unknown.binary</groupId>
+          <artifactId>org.eclipse.persistence.moxy</artifactId>
+          <version>SNAPSHOT</version>
+      </dependency>
+      <dependency>
+          <groupId>unknown.binary</groupId>
+          <artifactId>org.eclipse.persistence.oracle</artifactId>
+          <version>SNAPSHOT</version>
+      </dependency>
+      <dependency>
+          <groupId>unknown.binary</groupId>
+          <artifactId>javax.persistence</artifactId>
+          <version>SNAPSHOT</version>
+      </dependency>
+  </dependencies>
+</project>
