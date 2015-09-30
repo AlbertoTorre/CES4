@@ -20,8 +20,8 @@ public class listenerconfiguracion implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistencexlm");
-        sce.getServletContext().setAttribute("conexion", emf);
+        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistencexlm");
+        //sce.getServletContext().setAttribute("conexion", emf);
     }
 
     @Override
