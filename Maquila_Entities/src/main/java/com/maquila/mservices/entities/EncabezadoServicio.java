@@ -49,5 +49,5 @@ public class EncabezadoServicio implements Serializable {
     private Date Fecha_Servicio;
     @JoinColumn(name = "nm_id_cliente", referencedColumnName = "dni_id")
     @ManyToOne
-    private TmqCliente IdCliente;  
+    private Cliente IdCliente;  
 }

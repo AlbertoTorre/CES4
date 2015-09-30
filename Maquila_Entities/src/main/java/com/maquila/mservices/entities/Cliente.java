@@ -6,7 +6,7 @@ package com.maquila.mservices.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,8 +43,8 @@ public class Cliente implements Serializable{
     @Column(name = "ds_direccion")
     private String dsDireccion;
     @OneToMany(mappedBy = "nmIdCliente")
-    private Collection<TmqEncabezadoServicio> tmqEncabezadoServicioCollection;
+    private List<EncabezadoServicio> EncabezadoServicioCollection;
     @JoinColumn(name = "dni_id", referencedColumnName = "dni_id", insertable = false, updatable = false)
     @OneToOne(optional = false)
-    private TmqPersona tmqPersona;
+    private Persona Persona;
 }
