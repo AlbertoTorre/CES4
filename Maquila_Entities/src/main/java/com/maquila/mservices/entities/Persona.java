@@ -5,9 +5,7 @@
 package com.maquila.mservices.entities;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
@@ -22,32 +21,34 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Alex
+ * @author Usuario
  */
+
 @Entity
-@Table(name = "tmq_encabezado_servicio")
-public class EncabezadoServicio implements Serializable {
+@Table(name = "tmq_persona")
+public class Persona implements Serializable{
     @TableGenerator(
             table ="tmq_sq",
-            name ="tmq_es",//referencia
+            name ="tmq_pe",//referencia
             pkColumnName="tmq_seq",// columna con el nombre de sequencia
             valueColumnName="tmq_val",// valor de la secuencia actual
-            pkColumnValue="tmq_es_sq",//Nombre de la secuencia
+            pkColumnValue="tmq_pe_sq",//Nombre de la secuencia
             initialValue = 1,
             allocationSize = 1
     )
     @Id
-    @GeneratedValue(strategy=GenerationType.TABLE, generator="tmq_es")
-    @Column(name = "dni_id")
-    private Integer Id;
-    @Column(name = "nm_valor_total")
-    private BigInteger ValorTotal;
-    @Column(name = "nm_horas_totales_laboradas")
-    private Integer HorasTotalesLaboradas;
-    @Column(name = "fe_servicio")
+    @GeneratedValue(strategy=GenerationType.TABLE, generator="tmq_pe")
+
+    @Column(name = "ds_documento")
+    private String Documento;
+    @Column(name = "fe_registro")
     @Temporal(TemporalType.DATE)
-    private Date Fecha_Servicio;
-    @JoinColumn(name = "nm_id_cliente", referencedColumnName = "dni_id")
+    private Date feRegistro;
+    @OneToOne(mappedBy = "tmqPersona")
+    private Empleado Empleados;
+    @OneToOne(mappedBy = "tmqPersona")
+    private Cliente Cliente;
+    @JoinColumn(name = "id_tipo_documento", referencedColumnName = "dni_id")
     @ManyToOne
-    private TmqCliente IdCliente;  
+    private TipoDocumento IdTipoDocumento;
 }

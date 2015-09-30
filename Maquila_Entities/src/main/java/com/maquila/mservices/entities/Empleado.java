@@ -41,5 +41,5 @@ public class Empleado implements Serializable {
     
     @OneToMany
     @JoinColumn(name = "persona", referencedColumnName = "dni_id")
-    private Persona persona;              
+    private Persona persona;
 }
