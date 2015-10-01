@@ -18,6 +18,8 @@ import javax.persistence.TableGenerator;
 /**
  *
  * @author Usuario
+ * 
+ * 
  */
 @Entity
 @Table(name = "tmq_insumo")

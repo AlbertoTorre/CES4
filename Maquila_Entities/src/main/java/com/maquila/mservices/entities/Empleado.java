@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 /**
  *
  * @author Alex
+ * 
  */
 @Entity
 @Table(name = "tmq_empleados")

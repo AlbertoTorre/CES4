@@ -15,6 +15,7 @@ import javax.persistence.TableGenerator;
 /**
  *
  * @author Usuario
+ * 
  */
 public class TipoDocumento {
     @TableGenerator(

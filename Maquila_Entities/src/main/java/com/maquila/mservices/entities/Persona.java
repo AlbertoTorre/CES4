@@ -20,6 +20,8 @@ import javax.persistence.TemporalType;
 /**
  *
  * @author Usuario
+ * 
+ * 
  */
 
 @Entity
