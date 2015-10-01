@@ -1,0 +1,35 @@
+/* 
+    Document   : jquery-validation
+    Created on : 22/01/2015, 01:49:57 PM
+    Author     : Alex
+    Description:
+        Purpose of the stylesheet follows.
+    ______________________________________
+    Ultimas Modificaciones:27/03/2015 
+    Autor   Modificaciones:Dehost 
+*/
+
+label.error{
+    color: #E57D7B;
+    font-size: 11px;
+    
+    right: 15px;
+}
+input.error, textarea.error, select.error {
+    border-color: #efc6c3;
+    outline: 0;
+    -webkit-box-shadow: inset 0 0px 0px #efc6c3, 0 0 5px #efc6c3;
+    -ms-box-shadow: inset 0 0px 0px #efc6c3, 0 0 5px #efc6c3;
+    -moz-box-shadow: inset 0 0px 0px #efc6c3, 0 0 5px #efc6c3;
+    -o-box-shadow: inset 0 0px 0px #efc6c3, 0 0 5px #efc6c3;
+    box-shadow: inset 0 0px 0px #efc6c3, 0 0 5px #efc6c3;
+}
+
+input.valid, textarea.valid, select.valid{
+    border-color: #83C77C;
+    box-shadow: 0 0px 0px #83C77C inset, 0 0 5px #83C77C;
+    -ms-box-shadow: 0 0px 0px #83C77C inset, 0 0 5px #83C77C;
+    -moz-box-shadow: 0 0px 0px #83C77C inset, 0 0 5px #83C77C;
+    -webkit-box-shadow: 0 0px 0px #83C77C inset, 0 0 5px #83C77C;
+    -o-box-shadow: 0 0px 0px #83C77C inset, 0 0 5px #83C77C;
+}
