@@ -24,7 +24,7 @@
                         <img id="avatar" src="public/img/logo.png" alt="avatar">
                     </div>
                     <input id="txtEmail" name="txtEmail" type="email" class="form-control" placeholder="Email">
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
                 </form>
             </div>
