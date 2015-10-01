@@ -58,4 +58,52 @@ public class EncabezadoServicio implements Serializable {
     
     @OneToMany(mappedBy="id")
     private List<Empleado> empleado;    
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public BigInteger getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigInteger valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public Integer getHorasTotalesLaboradas() {
+        return horasTotalesLaboradas;
+    }
+
+    public void setHorasTotalesLaboradas(Integer horasTotalesLaboradas) {
+        this.horasTotalesLaboradas = horasTotalesLaboradas;
+    }
+
+    public Date getFechaServicio() {
+        return fechaServicio;
+    }
+
+    public void setFechaServicio(Date fechaServicio) {
+        this.fechaServicio = fechaServicio;
+    }
+
+    public List<Cliente> getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(List<Cliente> cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<Empleado> getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(List<Empleado> empleado) {
+        this.empleado = empleado;
+    }
 }

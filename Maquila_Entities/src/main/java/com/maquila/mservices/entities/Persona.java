@@ -56,4 +56,54 @@ public class Persona implements Serializable{
     
     @OneToOne(mappedBy = "id")
     private TipoDocumento idTipoDocumento;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
+
+    public Date getFeRegistro() {
+        return feRegistro;
+    }
+
+    public void setFeRegistro(Date feRegistro) {
+        this.feRegistro = feRegistro;
+    }
+
+    public Empleado getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(Empleado empleados) {
+        this.empleados = empleados;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public TipoDocumento getIdTipoDocumento() {
+        return idTipoDocumento;
+    }
+
+    public void setIdTipoDocumento(TipoDocumento idTipoDocumento) {
+        this.idTipoDocumento = idTipoDocumento;
+    }
+    
+    
 }

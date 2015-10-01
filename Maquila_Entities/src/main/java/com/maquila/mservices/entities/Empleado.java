@@ -52,10 +52,58 @@ public class Empleado implements Serializable {
     private Date fechaRetiro;
     
     @OneToOne
-    @JoinColumn(name="idCliente")
+    @JoinColumn(name="empleado")
     private EncabezadoServicio encabezadoServicio;
     
     @OneToOne
     @JoinColumn(name = "id")
     private Persona persona;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public Date getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public Date getFechaRetiro() {
+        return fechaRetiro;
+    }
+
+    public void setFechaRetiro(Date fechaRetiro) {
+        this.fechaRetiro = fechaRetiro;
+    }
+
+    public EncabezadoServicio getEncabezadoServicio() {
+        return encabezadoServicio;
+    }
+
+    public void setEncabezadoServicio(EncabezadoServicio encabezadoServicio) {
+        this.encabezadoServicio = encabezadoServicio;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
 }

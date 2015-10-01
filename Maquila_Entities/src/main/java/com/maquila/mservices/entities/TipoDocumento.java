@@ -4,6 +4,7 @@
  */
 package com.maquila.mservices.entities;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ import javax.persistence.TableGenerator;
  */
 @Entity
 @Table(name="tmq_tipo_documento")
-public class TipoDocumento {
+public class TipoDocumento implements Serializable {
     @TableGenerator(
             table ="tmq_sq",
             name ="tmq_td",//referencia
@@ -41,4 +42,32 @@ public class TipoDocumento {
     
     @OneToMany(mappedBy="idTipoDocumento")
     private List<Persona> persona;  
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Persona> getPersona() {
+        return persona;
+    }
+
+    public void setPersona(List<Persona> persona) {
+        this.persona = persona;
+    }
+    
+    
+    
+    
 }

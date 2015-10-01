@@ -47,10 +47,60 @@ public class Cliente implements Serializable{
     private String direccion;
     
     @OneToOne
-    @JoinColumn(name="idCliente")
+    @JoinColumn(name="cliente")
     private EncabezadoServicio encabezadoServicio;
     
     @OneToOne
     @JoinColumn(name = "id")
     private Persona persona;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Integer getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public EncabezadoServicio getEncabezadoServicio() {
+        return encabezadoServicio;
+    }
+
+    public void setEncabezadoServicio(EncabezadoServicio encabezadoServicio) {
+        this.encabezadoServicio = encabezadoServicio;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+    
+    
 }

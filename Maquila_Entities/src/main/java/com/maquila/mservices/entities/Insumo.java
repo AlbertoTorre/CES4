@@ -49,4 +49,47 @@ public class Insumo implements Serializable{
     
     @ManyToMany(mappedBy="insumos")
     private List<DetalleServicio> detalleServicios;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Integer getValor() {
+        return valor;
+    }
+
+    public void setValor(Integer valor) {
+        this.valor = valor;
+    }
+
+    public Integer getUnidades() {
+        return unidades;
+    }
+
+    public void setUnidades(Integer unidades) {
+        this.unidades = unidades;
+    }
+
+    public List<DetalleServicio> getDetalleServicios() {
+        return detalleServicios;
+    }
+
+    public void setDetalleServicios(List<DetalleServicio> detalleServicios) {
+        this.detalleServicios = detalleServicios;
+    }
+    
+    
+    
 }

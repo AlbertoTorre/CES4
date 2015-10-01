@@ -48,4 +48,39 @@ public class Servicio implements Serializable{
     @OneToOne
     @JoinColumn(name="IdServicio")
     private DetalleServicio detalleServicio;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    public DetalleServicio getDetalleServicio() {
+        return detalleServicio;
+    }
+
+    public void setDetalleServicio(DetalleServicio detalleServicio) {
+        this.detalleServicio = detalleServicio;
+    }
+    
+    
+    
 }
