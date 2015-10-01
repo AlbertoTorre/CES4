@@ -36,15 +36,23 @@ public class Cliente implements Serializable{
     )
     @Id
     @GeneratedValue(strategy=GenerationType.TABLE, generator="tmq_cl")
+    @Column(name = "dni_id")
+    private Integer id;
+    
     @Column(name = "ds_correo")
-    private String dsCorreo;
+    private String correo;
+    
     @Column(name = "nm_telefono")
-    private Integer nmTelefono;
+    private Integer telefono;
+    
     @Column(name = "ds_direccion")
-    private String dsDireccion;
-    @OneToMany(mappedBy = "nmIdCliente")
-    private Collection<TmqEncabezadoServicio> tmqEncabezadoServicioCollection;
-    @JoinColumn(name = "dni_id", referencedColumnName = "dni_id", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private TmqPersona tmqPersona;
+    private String direccion;
+    
+    @OneToOne
+    @JoinColumn(name="idCliente")
+    private EncabezadoServicio encabezadoServicio;
+    
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Persona persona;
 }

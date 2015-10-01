@@ -5,26 +5,25 @@
 package com.maquila.mservices.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 /**
  *
- * @author 
+ * @author Usuario
  */
 @Entity
-@Table(name = "tmq_detalle_servicio")
-public class DetalleServicio implements Serializable {
+@Table(name = "tmq_servicio")
+public class Servicio implements Serializable{
     @TableGenerator(
             table ="tmq_sq",
             name ="tmq_ds",//referencia
@@ -39,22 +38,13 @@ public class DetalleServicio implements Serializable {
     @Column(name = "dni_id")
     private Integer id;
     
-    private Integer idServicio;
-    @OneToMany(mappedBy="Id")//id de la entidad servicio
-    private List<Servicio> servicio;
-    
-    @Column(name = "nm_horas")
-    private Integer horas;
-    
-    @Column(name = "nm_valor_hora")
-    private Integer valorHora;
+    @Column(name = "ds_nombre")
+    private String nombre;
     
     @Column(name = "ds_observacion")
-    private String  observacion;
+    private String observacion;
     
-    @ManyToMany
-    @JoinTable(name="tmq_insumo_detalleservicio",
-               joinColumns=@JoinColumn(name="dni_detalle_servicio"),
-               inverseJoinColumns=@JoinColumn(name="dni_insumo"))
-    private List<Insumo> insumos;
+    @OneToOne
+    @JoinColumn(name="IdServicio")
+    private DetalleServicio detalleServicio;
 }
