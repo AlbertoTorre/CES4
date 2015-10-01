@@ -21,6 +21,7 @@ import javax.persistence.TableGenerator;
 /**
  *
  * @author 
+ * 
  */
 @Entity
 @Table(name = "tmq_detalle_servicio")

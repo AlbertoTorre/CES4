@@ -23,6 +23,7 @@ import javax.persistence.TableGenerator;
 @Entity
 @Table(name = "tmq_cliente")//como se llama en la base de datos
 public class Cliente implements Serializable{
+    
     @TableGenerator(
             table ="tmq_sq",
             name ="tmq_cl",//referencia

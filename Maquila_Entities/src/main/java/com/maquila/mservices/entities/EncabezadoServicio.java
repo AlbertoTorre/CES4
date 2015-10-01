@@ -22,9 +22,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
  * @author Alex
- * 
  */
 @Entity
 @Table(name = "tmq_encabezado_servicio")

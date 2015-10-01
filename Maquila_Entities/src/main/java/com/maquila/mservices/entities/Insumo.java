@@ -16,9 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 /**
- *
  * @author Usuario
- * 
  * 
  */
 @Entity
