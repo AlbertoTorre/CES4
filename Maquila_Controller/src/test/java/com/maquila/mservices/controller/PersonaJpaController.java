@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.maquila.mservices.controller;
@@ -20,7 +21,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Alex
+ * @author marlly montoya
  */
 public class PersonaJpaController implements Serializable {
 
@@ -55,15 +56,25 @@ public class PersonaJpaController implements Serializable {
             }
             em.persist(persona);
             if (empleados != null) {
-                empleados.getId().add(persona);
+                Persona oldPersonaOfEmpleados = empleados.getPersona();
+                if (oldPersonaOfEmpleados != null) {
+                    oldPersonaOfEmpleados.setEmpleados(null);
+                    oldPersonaOfEmpleados = em.merge(oldPersonaOfEmpleados);
+                }
+                empleados.setPersona(persona);
                 empleados = em.merge(empleados);
             }
             if (cliente != null) {
-                cliente.getId().add(persona);
+                Persona oldPersonaOfCliente = cliente.getPersona();
+                if (oldPersonaOfCliente != null) {
+                    oldPersonaOfCliente.setCliente(null);
+                    oldPersonaOfCliente = em.merge(oldPersonaOfCliente);
+                }
+                cliente.setPersona(persona);
                 cliente = em.merge(cliente);
             }
             if (idTipoDocumento != null) {
-                idTipoDocumento.getId().add(persona);
+                idTipoDocumento.getPersona().add(persona);
                 idTipoDocumento = em.merge(idTipoDocumento);
             }
             em.getTransaction().commit();
@@ -100,27 +111,37 @@ public class PersonaJpaController implements Serializable {
             }
             persona = em.merge(persona);
             if (empleadosOld != null && !empleadosOld.equals(empleadosNew)) {
-                empleadosOld.getId().remove(persona);
+                empleadosOld.setPersona(null);
                 empleadosOld = em.merge(empleadosOld);
             }
             if (empleadosNew != null && !empleadosNew.equals(empleadosOld)) {
-                empleadosNew.getId().add(persona);
+                Persona oldPersonaOfEmpleados = empleadosNew.getPersona();
+                if (oldPersonaOfEmpleados != null) {
+                    oldPersonaOfEmpleados.setEmpleados(null);
+                    oldPersonaOfEmpleados = em.merge(oldPersonaOfEmpleados);
+                }
+                empleadosNew.setPersona(persona);
                 empleadosNew = em.merge(empleadosNew);
             }
             if (clienteOld != null && !clienteOld.equals(clienteNew)) {
-                clienteOld.getId().remove(persona);
+                clienteOld.setPersona(null);
                 clienteOld = em.merge(clienteOld);
             }
             if (clienteNew != null && !clienteNew.equals(clienteOld)) {
-                clienteNew.getId().add(persona);
+                Persona oldPersonaOfCliente = clienteNew.getPersona();
+                if (oldPersonaOfCliente != null) {
+                    oldPersonaOfCliente.setCliente(null);
+                    oldPersonaOfCliente = em.merge(oldPersonaOfCliente);
+                }
+                clienteNew.setPersona(persona);
                 clienteNew = em.merge(clienteNew);
             }
             if (idTipoDocumentoOld != null && !idTipoDocumentoOld.equals(idTipoDocumentoNew)) {
-                idTipoDocumentoOld.getId().remove(persona);
+                idTipoDocumentoOld.getPersona().remove(persona);
                 idTipoDocumentoOld = em.merge(idTipoDocumentoOld);
             }
             if (idTipoDocumentoNew != null && !idTipoDocumentoNew.equals(idTipoDocumentoOld)) {
-                idTipoDocumentoNew.getId().add(persona);
+                idTipoDocumentoNew.getPersona().add(persona);
                 idTipoDocumentoNew = em.merge(idTipoDocumentoNew);
             }
             em.getTransaction().commit();
@@ -154,17 +175,17 @@ public class PersonaJpaController implements Serializable {
             }
             Empleado empleados = persona.getEmpleados();
             if (empleados != null) {
-                empleados.getId().remove(persona);
+                empleados.setPersona(null);
                 empleados = em.merge(empleados);
             }
             Cliente cliente = persona.getCliente();
             if (cliente != null) {
-                cliente.getId().remove(persona);
+                cliente.setPersona(null);
                 cliente = em.merge(cliente);
             }
             TipoDocumento idTipoDocumento = persona.getIdTipoDocumento();
             if (idTipoDocumento != null) {
-                idTipoDocumento.getId().remove(persona);
+                idTipoDocumento.getPersona().remove(persona);
                 idTipoDocumento = em.merge(idTipoDocumento);
             }
             em.remove(persona);

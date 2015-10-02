@@ -48,13 +48,13 @@ public class Persona implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date feRegistro;
     
-    @OneToOne(mappedBy = "id")
+    @OneToOne(mappedBy = "persona")
     private Empleado empleados;
     
-    @OneToOne(mappedBy = "id")
+    @OneToOne(mappedBy = "persona")
     private Cliente cliente;
     
-    @OneToOne(mappedBy = "id")
+    @OneToOne(mappedBy = "persona")
     private TipoDocumento idTipoDocumento;
 
     public Integer getId() {

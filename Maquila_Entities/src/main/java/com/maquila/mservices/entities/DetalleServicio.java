@@ -6,6 +6,8 @@ package com.maquila.mservices.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,11 +38,12 @@ public class DetalleServicio implements Serializable {
     )
     @Id
     @GeneratedValue(strategy=GenerationType.TABLE, generator="tmq_ds")
+    @Access(AccessType.PROPERTY)
     @Column(name = "dni_id")
     private Integer id;
     
     private Integer idServicio;
-    @OneToMany(mappedBy="Id")//id de la entidad servicio
+    @OneToMany(mappedBy="detalleServicio")//id de la entidad servicio
     private List<Servicio> servicio;
     
     @Column(name = "nm_horas")

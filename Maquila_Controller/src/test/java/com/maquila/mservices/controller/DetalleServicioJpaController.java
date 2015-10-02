@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.maquila.mservices.controller;
@@ -20,7 +21,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Alex
+ * @author marlly montoya
  */
 public class DetalleServicioJpaController implements Serializable {
 
@@ -58,8 +59,13 @@ public class DetalleServicioJpaController implements Serializable {
             detalleServicio.setInsumos(attachedInsumos);
             em.persist(detalleServicio);
             for (Servicio servicioServicio : detalleServicio.getServicio()) {
-                servicioServicio.getId().add(detalleServicio);
+                DetalleServicio oldDetalleServicioOfServicioServicio = servicioServicio.getDetalleServicio();
+                servicioServicio.setDetalleServicio(detalleServicio);
                 servicioServicio = em.merge(servicioServicio);
+                if (oldDetalleServicioOfServicioServicio != null) {
+                    oldDetalleServicioOfServicioServicio.getServicio().remove(servicioServicio);
+                    oldDetalleServicioOfServicioServicio = em.merge(oldDetalleServicioOfServicioServicio);
+                }
             }
             for (Insumo insumosInsumo : detalleServicio.getInsumos()) {
                 insumosInsumo.getDetalleServicios().add(detalleServicio);
@@ -100,14 +106,19 @@ public class DetalleServicioJpaController implements Serializable {
             detalleServicio = em.merge(detalleServicio);
             for (Servicio servicioOldServicio : servicioOld) {
                 if (!servicioNew.contains(servicioOldServicio)) {
-                    servicioOldServicio.getId().remove(detalleServicio);
+                    servicioOldServicio.setDetalleServicio(null);
                     servicioOldServicio = em.merge(servicioOldServicio);
                 }
             }
             for (Servicio servicioNewServicio : servicioNew) {
                 if (!servicioOld.contains(servicioNewServicio)) {
-                    servicioNewServicio.getId().add(detalleServicio);
+                    DetalleServicio oldDetalleServicioOfServicioNewServicio = servicioNewServicio.getDetalleServicio();
+                    servicioNewServicio.setDetalleServicio(detalleServicio);
                     servicioNewServicio = em.merge(servicioNewServicio);
+                    if (oldDetalleServicioOfServicioNewServicio != null && !oldDetalleServicioOfServicioNewServicio.equals(detalleServicio)) {
+                        oldDetalleServicioOfServicioNewServicio.getServicio().remove(servicioNewServicio);
+                        oldDetalleServicioOfServicioNewServicio = em.merge(oldDetalleServicioOfServicioNewServicio);
+                    }
                 }
             }
             for (Insumo insumosOldInsumo : insumosOld) {
@@ -153,7 +164,7 @@ public class DetalleServicioJpaController implements Serializable {
             }
             List<Servicio> servicio = detalleServicio.getServicio();
             for (Servicio servicioServicio : servicio) {
-                servicioServicio.getId().remove(detalleServicio);
+                servicioServicio.setDetalleServicio(null);
                 servicioServicio = em.merge(servicioServicio);
             }
             List<Insumo> insumos = detalleServicio.getInsumos();

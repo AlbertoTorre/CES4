@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.maquila.mservices.controller;
@@ -20,7 +21,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Alex
+ * @author marlly montoya
  */
 public class EncabezadoServicioJpaController implements Serializable {
 
@@ -58,12 +59,22 @@ public class EncabezadoServicioJpaController implements Serializable {
             encabezadoServicio.setEmpleado(attachedEmpleado);
             em.persist(encabezadoServicio);
             for (Cliente clienteCliente : encabezadoServicio.getCliente()) {
-                clienteCliente.getId().add(encabezadoServicio);
+                EncabezadoServicio oldEncabezadoServicioOfClienteCliente = clienteCliente.getEncabezadoServicio();
+                clienteCliente.setEncabezadoServicio(encabezadoServicio);
                 clienteCliente = em.merge(clienteCliente);
+                if (oldEncabezadoServicioOfClienteCliente != null) {
+                    oldEncabezadoServicioOfClienteCliente.getCliente().remove(clienteCliente);
+                    oldEncabezadoServicioOfClienteCliente = em.merge(oldEncabezadoServicioOfClienteCliente);
+                }
             }
             for (Empleado empleadoEmpleado : encabezadoServicio.getEmpleado()) {
-                empleadoEmpleado.getId().add(encabezadoServicio);
+                EncabezadoServicio oldEncabezadoServicioOfEmpleadoEmpleado = empleadoEmpleado.getEncabezadoServicio();
+                empleadoEmpleado.setEncabezadoServicio(encabezadoServicio);
                 empleadoEmpleado = em.merge(empleadoEmpleado);
+                if (oldEncabezadoServicioOfEmpleadoEmpleado != null) {
+                    oldEncabezadoServicioOfEmpleadoEmpleado.getEmpleado().remove(empleadoEmpleado);
+                    oldEncabezadoServicioOfEmpleadoEmpleado = em.merge(oldEncabezadoServicioOfEmpleadoEmpleado);
+                }
             }
             em.getTransaction().commit();
         } finally {
@@ -100,26 +111,36 @@ public class EncabezadoServicioJpaController implements Serializable {
             encabezadoServicio = em.merge(encabezadoServicio);
             for (Cliente clienteOldCliente : clienteOld) {
                 if (!clienteNew.contains(clienteOldCliente)) {
-                    clienteOldCliente.getId().remove(encabezadoServicio);
+                    clienteOldCliente.setEncabezadoServicio(null);
                     clienteOldCliente = em.merge(clienteOldCliente);
                 }
             }
             for (Cliente clienteNewCliente : clienteNew) {
                 if (!clienteOld.contains(clienteNewCliente)) {
-                    clienteNewCliente.getId().add(encabezadoServicio);
+                    EncabezadoServicio oldEncabezadoServicioOfClienteNewCliente = clienteNewCliente.getEncabezadoServicio();
+                    clienteNewCliente.setEncabezadoServicio(encabezadoServicio);
                     clienteNewCliente = em.merge(clienteNewCliente);
+                    if (oldEncabezadoServicioOfClienteNewCliente != null && !oldEncabezadoServicioOfClienteNewCliente.equals(encabezadoServicio)) {
+                        oldEncabezadoServicioOfClienteNewCliente.getCliente().remove(clienteNewCliente);
+                        oldEncabezadoServicioOfClienteNewCliente = em.merge(oldEncabezadoServicioOfClienteNewCliente);
+                    }
                 }
             }
             for (Empleado empleadoOldEmpleado : empleadoOld) {
                 if (!empleadoNew.contains(empleadoOldEmpleado)) {
-                    empleadoOldEmpleado.getId().remove(encabezadoServicio);
+                    empleadoOldEmpleado.setEncabezadoServicio(null);
                     empleadoOldEmpleado = em.merge(empleadoOldEmpleado);
                 }
             }
             for (Empleado empleadoNewEmpleado : empleadoNew) {
                 if (!empleadoOld.contains(empleadoNewEmpleado)) {
-                    empleadoNewEmpleado.getId().add(encabezadoServicio);
+                    EncabezadoServicio oldEncabezadoServicioOfEmpleadoNewEmpleado = empleadoNewEmpleado.getEncabezadoServicio();
+                    empleadoNewEmpleado.setEncabezadoServicio(encabezadoServicio);
                     empleadoNewEmpleado = em.merge(empleadoNewEmpleado);
+                    if (oldEncabezadoServicioOfEmpleadoNewEmpleado != null && !oldEncabezadoServicioOfEmpleadoNewEmpleado.equals(encabezadoServicio)) {
+                        oldEncabezadoServicioOfEmpleadoNewEmpleado.getEmpleado().remove(empleadoNewEmpleado);
+                        oldEncabezadoServicioOfEmpleadoNewEmpleado = em.merge(oldEncabezadoServicioOfEmpleadoNewEmpleado);
+                    }
                 }
             }
             em.getTransaction().commit();
@@ -153,12 +174,12 @@ public class EncabezadoServicioJpaController implements Serializable {
             }
             List<Cliente> cliente = encabezadoServicio.getCliente();
             for (Cliente clienteCliente : cliente) {
-                clienteCliente.getId().remove(encabezadoServicio);
+                clienteCliente.setEncabezadoServicio(null);
                 clienteCliente = em.merge(clienteCliente);
             }
             List<Empleado> empleado = encabezadoServicio.getEmpleado();
             for (Empleado empleadoEmpleado : empleado) {
-                empleadoEmpleado.getId().remove(encabezadoServicio);
+                empleadoEmpleado.setEncabezadoServicio(null);
                 empleadoEmpleado = em.merge(empleadoEmpleado);
             }
             em.remove(encabezadoServicio);

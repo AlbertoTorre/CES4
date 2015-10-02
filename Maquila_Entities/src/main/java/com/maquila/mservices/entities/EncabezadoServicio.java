@@ -8,13 +8,13 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -41,6 +41,7 @@ public class EncabezadoServicio implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.TABLE, generator="tmq_es")
     @Column(name = "dni_id")
+    @Access(AccessType.PROPERTY)
     private Integer id;
     
     @Column(name = "nm_valor_total")
@@ -53,10 +54,10 @@ public class EncabezadoServicio implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaServicio;
     
-    @OneToMany(mappedBy="id")
+    @OneToMany(mappedBy="encabezadoServicio")
     private List<Cliente> cliente;
     
-    @OneToMany(mappedBy="id")
+    @OneToMany(mappedBy="encabezadoServicio")
     private List<Empleado> empleado;    
 
     public Integer getId() {
