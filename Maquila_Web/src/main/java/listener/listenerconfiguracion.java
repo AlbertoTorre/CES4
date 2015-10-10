@@ -4,6 +4,8 @@
  */
 package listener;
 
+import com.maquila.mservices.controller.InsumoJpaController;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletContextEvent;
@@ -20,8 +22,12 @@ public class listenerconfiguracion implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistencexlm");
-        //sce.getServletContext().setAttribute("conexion", emf);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("persis");
+        sce.getServletContext().setAttribute("conexion", emf);
+        
+//        InsumoJpaController insumu   = new InsumoJpaController(emf);
+//        sce.getServletContext().setAttribute("insumo", insumu);
+        
     }
 
     @Override
